@@ -6,7 +6,7 @@ AppController.$inject = ['$scope', 'AppService'];
 
 function AppController($scope, AppService) {
 
-    var parentIds = [], parentIdSum = 0;
+    var parentIds = [], parentIdSum = 0, selectMax = 2;
 
     $scope.grandparents = [];
 
@@ -41,8 +41,7 @@ function AppController($scope, AppService) {
         parentIds.push(id);
         parentIdSum += id;
 
-        if (parentIds.length == 2) {
-            console.log(parentIdSum);
+        if (parentIds.length == selectMax) {
             AppService.get({params: 'children'})
                 .then(function(data) {
                     $scope.childrens = data.filter(function (childrenId) {
