@@ -1,0 +1,1 @@
+Executar o comando: "php -S localhost:8000" no diretório raiz.
