@@ -24,17 +24,16 @@
         <h3 class="text-muted">Test Buonny</h3>
     </div>
 
-    <div class="jumbotron">
+    <!--<div class="jumbotron">
         <h1>Jumbotron heading</h1>
         <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-    </div>
+    </div>-->
 
     <table class="table">
         <caption>Selecione um item.</caption>
         <thead>
             <tr>
-                <th>#</th>
                 <th>AVÓS</th>
                 <th>PAIS</th>
                 <th>FILHOS</th>
@@ -42,16 +41,24 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row"><input type="radio" id="js-click"/></th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@Ted</td>
-            </tr>
-            <tr>
-                <th scope="row"><input type="radio" /></th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@Fat</td>
+                <td>
+                    <div ng-repeat="grand in grandparents">
+                        <input type="radio" name="grand" ng-click="grandClickable(grand.id)">
+                        {{grand.nome}}
+                    </div>
+                </td>
+                <td>
+                    <div ng-repeat="parent in parents track by $index" ng-show="visibles.parent">
+                        <input type="checkbox" name="parent[$index]" ng-click="parentClickable(parent.id)"/>
+                        {{parent.nome}}
+                    </div>
+                </td>
+                <td>
+                    <div ng-repeat="children in childrens" ng-show="visibles.children">
+                        <input type="radio"/>
+                        {{children.nome}}
+                    </div>
+                </td>
             </tr>
         </tbody>
     </table>
